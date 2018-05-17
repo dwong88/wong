@@ -3,9 +3,9 @@
 <div>
     <div col-md-6 col-md-offset-3>
       <h3>{{$users->total()}} Total Users</h3>
-      <b>In This page (){{$users->count()}} users)</b>
-        <ul class="list-group">
-          @foreach ($users as $user)
+      <b>In This page ({{$users->count()}} users)</b>
+      <ul class="list-group">
+        @forelse($users as $user)
             <li class="list-group-item" style="margin-top:20px">
               <span>{{$user->name}}
               </span>
@@ -15,9 +15,12 @@
                   </button>
               </span>
             </li>
-          @endforeach
+        @empty
+            <p> No Users Available</p>
+        @endforelse
           {{ $users->links() }} <!--create page-->
-        </ul>
+      </ul>
+
       <div>
 </div>
 @endsection

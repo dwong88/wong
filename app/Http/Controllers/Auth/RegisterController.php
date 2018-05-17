@@ -66,6 +66,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => ucfirst($data['name']),
             'email' => $data['email'],
+            //'password' => mcrypt($data['password']),
             'password' => Hash::make($data['password']),
         ]);
     }
